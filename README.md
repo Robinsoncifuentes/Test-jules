@@ -2,6 +2,15 @@
 
 This project is a responsive landing page built using React, Vite, and Tailwind CSS. It features several sections commonly found on landing pages, including a navigation bar, hero section, about section, contact form, and footer.
 
+## Key Technologies & Libraries
+
+This project leverages a modern tech stack to deliver a responsive and interactive user experience:
+
+-   **React**: A JavaScript library for building user interfaces.
+-   **Vite**: A fast build tool and development server for modern web projects.
+-   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+-   **react-intersection-observer**: A React component for easily tracking the visibility of elements, used here for scroll-triggered animations.
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:

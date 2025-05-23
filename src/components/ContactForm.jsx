@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
+  });
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
   });
 
   const handleChange = (e) => {
@@ -28,18 +34,22 @@ function ContactForm() {
   };
 
   return (
-    <section id="contact" className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+    <section 
+      id="contact" 
+      ref={ref}
+      className={`bg-secondary-light py-20 sm:py-24 px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10 transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : ''}`}
+    >
       <div className="container mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 text-center mb-12 animate-fade-in-down delay-200">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading text-primary-dark text-center mb-12">
           Contact Us
         </h2>
         <form 
           onSubmit={handleSubmit} 
-          className="max-w-xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl space-y-6 animate-fade-in-up delay-400"
+          className="max-w-xl mx-auto bg-white p-8 sm:p-10 rounded-xl shadow-2xl space-y-6"
         >
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="name" className="block font-sans text-text-main text-sm font-semibold mb-2">
               Full Name
             </label>
             <input
@@ -49,14 +59,14 @@ function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out"
+              className="font-sans text-text-main shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-coral focus:border-accent-coral transition duration-200 ease-in-out"
               placeholder="Your Name"
             />
           </div>
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="email" className="block font-sans text-text-main text-sm font-semibold mb-2">
               Email Address
             </label>
             <input
@@ -66,14 +76,14 @@ function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out"
+              className="font-sans text-text-main shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-coral focus:border-accent-coral transition duration-200 ease-in-out"
               placeholder="you@example.com"
             />
           </div>
 
           {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-gray-800 text-sm font-semibold mb-2">
+            <label htmlFor="message" className="block font-sans text-text-main text-sm font-semibold mb-2">
               Message
             </label>
             <textarea
@@ -83,7 +93,7 @@ function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               required
-              className="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 ease-in-out"
+              className="font-sans text-text-main shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-coral focus:border-accent-coral transition duration-200 ease-in-out"
               placeholder="Your message..."
             ></textarea>
           </div>
@@ -92,7 +102,7 @@ function ContactForm() {
           <div>
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition-all duration-300 ease-in-out transform hover:scale-105"
+              className="w-full bg-accent-coral hover:brightness-95 text-white font-sans font-bold py-3 px-6 rounded-lg shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent-coral focus:ring-offset-2 focus:ring-offset-secondary-light transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 active:scale-95 active:brightness-90"
             >
               Send Message
             </button>

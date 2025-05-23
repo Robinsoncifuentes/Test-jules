@@ -8,7 +8,7 @@ import './App.css'; // Keep for any App-specific global styles, or it can be rem
 
 function App() {
   return (
-    <div>
+    <div className="bg-bg-light font-sans text-text-main">
       <Navbar />
       <Hero />
       <About />
